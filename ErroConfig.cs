@@ -13,6 +13,9 @@ namespace ExceptionHandler
     [Serializable()]
     class ErroConfig : ObjetoConfig
     {
+        /// <summary>
+        /// Struct que representa um erro
+        /// </summary>
         [Serializable()]
         struct Erro
         {

@@ -131,58 +131,6 @@ namespace ExceptionHandler
         }
 
         /// <summary>
-        /// Altera a cor e o texto de um controle para exibir um alerta
-        /// Leonardo Costa 30/10/2015
-        /// </summary>
-        /// <param name="ctrl">Controle a ser alterado</param>
-        /// <param name="texto">Texto do controle</param>
-        /// <param name="cbc">Nível do alerta</param>
-        /// <returns>Retorna o controle alterado</returns>
-        public static Control AlterarControle(Control ctrl, string texto = "", ControleBackgroundColor cbc = ControleBackgroundColor.Amarelo)
-        {
-            switch (cbc)
-            {
-                case ControleBackgroundColor.Verde:
-                    ctrl.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-                    break;
-                case ControleBackgroundColor.Amarelo:
-                    ctrl.BackColor = System.Drawing.Color.FromArgb(255, 255, 128);
-                    break;
-                case ControleBackgroundColor.Vermelho:
-                    ctrl.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-                    break;
-            }
-            if (!string.IsNullOrEmpty(texto))
-                ctrl.Text = texto;
-            return ctrl;
-        }
-
-        /// <summary>
-        /// Extensão que altera a cor e o texto de um controle para exibir um alerta
-        /// Leonardo Costa 30/10/2015
-        /// </summary>
-        /// <param name="texto">Texto do controle</param>
-        /// <param name="cbc">Nível do alerta</param>
-        public static Control AlterarControleExt(this Control ctrl, string texto = "", ControleBackgroundColor cbc = ControleBackgroundColor.Amarelo)
-        {
-            switch (cbc)
-            {
-                case ControleBackgroundColor.Verde:
-                    ctrl.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-                    break;
-                case ControleBackgroundColor.Amarelo:
-                    ctrl.BackColor = System.Drawing.Color.FromArgb(255, 255, 128);
-                    break;
-                case ControleBackgroundColor.Vermelho:
-                    ctrl.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-                    break;
-            }
-            if (!string.IsNullOrEmpty(texto))
-                ctrl.Text = texto;
-            return ctrl;
-        }
-
-        /// <summary>
         /// Evento executado de forma assíncrona que tenta salvar o relatório
         /// Leonardo Costa 30/10/2015
         /// </summary>
@@ -212,13 +160,16 @@ namespace ExceptionHandler
         /// Andrei 07/11/2015
         /// </summary>
         /// <param name="nomePrograma"></param>
-        public static void ConfigurarMsgAvancado(string nomePrograma)
+        public static void ConfigurarMsgAvancado(string nomePrograma, bool exibirErros = true, bool salvarErros= true, bool exibirDetalhes = true)
         {
             // Tratamento de exceções não tratadas e de exceções dos Threads dos Forms
             AppDomain.CurrentDomain.UnhandledException += GlobalUnhandledExceptionHandler;
             Application.ThreadException += GlobalThreadExceptionHandler;
-            //Define o nome do programa
+            //Define as configurações básicas
             NomePrograma = nomePrograma;
+            ExibeErrosProgramador = exibirErros;
+            SalvarRelatoriosDeErros = salvarErros;
+            exibeDetalhesDeErros = exibirDetalhes;
         }
 
         private static void GlobalThreadExceptionHandler(object sender, ThreadExceptionEventArgs e)
@@ -263,26 +214,6 @@ namespace ExceptionHandler
             /// Leonardo 28/10/2015
             /// </summary>
             Gravissimo
-        }
-
-        /// <summary>
-        /// Enumera níveis de alertas em controles
-        /// Leonardo Costa 30/10/2015
-        /// </summary>
-        public enum ControleBackgroundColor
-        {
-            /// <summary>
-            /// Verde claro #80FF80, indica que tudo está OK
-            /// </summary>
-            Verde = 0,
-            /// <summary>
-            /// Amarelo #FFFF80, indica uma recomendação
-            /// </summary>
-            Amarelo,
-            /// <summary>
-            /// Vermelho #FF8080, indica uma obrigação
-            /// </summary>
-            Vermelho
         }
     }
 }
