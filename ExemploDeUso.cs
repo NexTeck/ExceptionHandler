@@ -19,6 +19,14 @@ namespace ExceptionHandler
         {
             InitializeComponent();
 
+            MsgAvancado.ExibirErroValidacao("Você errou em alguma parte");
+            MsgAvancado.ExibirInformacao("Pare de errar");
+            var r = MsgAvancado.ExibirPergunta("Você vai parar de errar?");
+            if (r == System.Windows.Forms.DialogResult.Yes)
+                MsgAvancado.ExibirInformacao("Que bom cara");
+            else
+                MsgAvancado.ExibirErroValidacao("Você deve parar de errar!");
+
 
             //Define a MsgControl com a atualização de um label
             msg = new MsgControl(label1);

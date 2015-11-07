@@ -125,9 +125,33 @@ namespace ExceptionHandler
                 if (intensidade == IntensidadeErro.Gravissimo)
                 mensagem += Environment.NewLine + "Informe este código ao desenvolvedor do sistema: " + ((ex.HResult - 5) * 7);
             if (!string.IsNullOrEmpty(mensagem))
-                System.Windows.Forms.MessageBox.Show(mensagem, NomePrograma, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(mensagem, NomePrograma, MessageBoxButtons.OK, MessageBoxIcon.Error);
             if (intensidade == IntensidadeErro.Gravissimo && !salvarRelatoriosDeErros)
                 Application.Restart();
+        }
+
+        /// <summary>
+        /// Exibe uma informação
+        /// </summary>
+        public static void ExibirInformacao(string mensagem)
+        {
+            MessageBox.Show(mensagem, NomePrograma, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Exibe um erro validação
+        /// </summary>
+        public static void ExibirErroValidacao(string mensagem)
+        {
+            MessageBox.Show(mensagem, NomePrograma, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        /// <summary>
+        /// Exibe um erro pergunta
+        /// </summary>
+        public static DialogResult ExibirPergunta(string mensagem)
+        {
+            return MessageBox.Show(mensagem, NomePrograma, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
         /// <summary>
