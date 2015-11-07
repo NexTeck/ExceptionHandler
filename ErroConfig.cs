@@ -13,10 +13,17 @@ namespace ExceptionHandler
     [Serializable()]
     class ErroConfig : ObjetoConfig
     {
+        [Serializable()]
         struct Erro
         {
-            public Exception ex;
-            public DateTime data;
+            public Exception Ex;
+            public DateTime Data;
+
+            public Erro(Exception ex, DateTime data)
+            {
+                Ex = ex;
+                Data = data;
+            }
         }
 
         /// <summary>
@@ -32,9 +39,7 @@ namespace ExceptionHandler
         /// <param name="ex">Exceção</param>
         public void AddError(Exception ex)
         {
-            Erro erro = new Erro();
-            erro.ex = ex;
-            erro.data = DateTime.Now;
+            Erro erro = new Erro(ex, DateTime.Now);
             erros.Add(erro);
         }
 

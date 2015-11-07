@@ -28,8 +28,16 @@ namespace ExceptionHandler
         {
             FileStream inStr = new FileStream(tipo.Name + ".bin", FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
-            ObjetoConfig objetoConfig = bf.Deserialize(inStr) as ObjetoConfig;
-            inStr.Close();
+            ObjetoConfig objetoConfig = null;
+            try
+            {
+                objetoConfig = bf.Deserialize(inStr) as ObjetoConfig;
+            }
+            catch (Exception ex)
+            {
+                inStr.Close();
+                throw ex;
+            }
             return objetoConfig;
         }
 
