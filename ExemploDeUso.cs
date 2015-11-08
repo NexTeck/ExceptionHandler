@@ -13,7 +13,7 @@ namespace ExceptionHandler
 {
     public partial class ExemploDeUso : Form
     {
-        MsgControl msg;
+        MsgSingleControl msg;
 
         public ExemploDeUso()
         {
@@ -28,8 +28,8 @@ namespace ExceptionHandler
                 MsgAvancado.ExibirErroValidacao("Você deve parar de errar!");
 
 
-            //Define a MsgControl com a atualização de um label
-            msg = new MsgControl(label1);
+            //Define a MsgSingleControl com a atualização de um label
+            msg = new MsgSingleControl(label1);
             msg.TextoExibido = "Texto que não terá tempo suficiente para ser exibido";
             //Define que ele está rodando async
             //Não pode setar durante a thread async
@@ -47,9 +47,9 @@ namespace ExceptionHandler
             //Des de que a propriedade RodandoCarregamento esteja setado true
             msg.TextoExibido = "Inicio da espera";
             System.Threading.Thread.Sleep(1000);
-            msg.DefinirMensagem("Esperando", MsgControl.TipoMensagem.Normal);
+            msg.DefinirMensagem("Esperando", MsgSingleControl.TipoMensagem.Normal);
             System.Threading.Thread.Sleep(10000);
-            msg.DefinirMensagem("Espera finalizada", MsgControl.TipoMensagem.Informacao);
+            msg.DefinirMensagem("Espera finalizada", MsgSingleControl.TipoMensagem.Informacao);
             //Pode definir a propriedade RodandoCarregamento como false diretamente pela 
             //Thread async, porém uma vez mudado não se pode mudar os textos por causa
             //que há a possibilidade de ocorrer um erro
