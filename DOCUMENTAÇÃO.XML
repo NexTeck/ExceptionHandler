@@ -1,0 +1,474 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ExceptionHandler</name>
+    </assembly>
+    <members>
+        <member name="T:ExceptionHandler.ControllerConfig">
+            <summary>
+            Objeto que armazena as configurações do programa
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.ControllerConfig.Salvar(ExceptionHandler.ObjetoConfig)">
+            <summary>
+            Salva as configurações de um objeto de configuração
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.ControllerConfig.Carregar(System.Type)">
+            <summary>
+            Carrega um objeto de configuração de um diretório específico
+            </summary>
+            <param name="tipo">O tipo da configuração que será carregada</param>
+        </member>
+        <member name="M:ExceptionHandler.ControllerConfig.CarregarOuCriar(System.Type)">
+            <summary>
+            Carrega um objeto de configuração de um diretório específico, se ele não existe então é criado
+            </summary>
+            <param name="dir">O diretorio a ser carregado</param>
+        </member>
+        <member name="T:ExceptionHandler.ErroConfig">
+            <summary>
+            Classe que será serializada com as exceções e suas datas
+            Leonardo Costa 30/10/2015
+            </summary>
+        </member>
+        <member name="T:ExceptionHandler.ErroConfig.Erro">
+            <summary>
+            Struct que representa um erro
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.ErroConfig.erros">
+            <summary>
+            Lista de exceções e suas datas
+            Leonardo Costa 30/10/2015
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.ErroConfig.AddError(System.Exception)">
+            <summary>
+            Adiciona uma exceção no objeto.
+            Leonardo Costa 30/10/2015
+            </summary>
+            <param name="ex">Exceção</param>
+        </member>
+        <member name="M:ExceptionHandler.ErroConfig.AddErrorRange(System.Exception[])">
+            <summary>
+            Adiciona um conjunto de Exceptions
+            Leonardo Costa 30/10/2015
+            </summary>
+            <param name="ex">Conjunto de exceções. Não é necessário adicionar InnerExceptions, somente a BaseException</param>
+        </member>
+        <member name="M:ExceptionHandler.ErroConfig.#ctor(System.Exception)">
+            <summary>
+            Construtor que inicializa o objeto com uma exceção
+            Leonardo Costa 30/10/2015
+            </summary>
+            <param name="ex">Primeira exceção no objeto</param>
+        </member>
+        <member name="M:ExceptionHandler.ErroConfig.#ctor">
+            <summary>
+            Construtor que inicializa um objeto vazio
+            Leonardo Costa 30/10/2015
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.ExemploDeUso.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.ExemploDeUso.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ExceptionHandler.ExemploDeUso.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ExceptionHandler.MsgAvancado">
+            <summary>
+            Objeto estático usado para exibir mensagens de erro para os usuários
+            Os erros exibidos irão ser exibidos se estiver configurado para ser exibido para
+            programador ou usuário padrão. Erros graves serão armazenados em arquivos de log
+            Andrei  27/10/2015
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgAvancado.recover">
+            <summary>
+            Objeto que cria um thread pra tentar salvar o estado atual do sistema
+            Leonardo 28/10/2015
+            </summary>
+        </member>
+        <member name="P:ExceptionHandler.MsgAvancado.NomePrograma">
+            <summary>
+            O nome do programa para exibir as mensagens de erro
+            </summary>
+        </member>
+        <member name="P:ExceptionHandler.MsgAvancado.ExibeErrosProgramador">
+            <summary>
+            Variável que indica se exibe erros de programação
+            </summary>
+        </member>
+        <member name="P:ExceptionHandler.MsgAvancado.SalvarRelatoriosDeErros">
+            <summary>
+            Só pra não ficar salvando relatórios enquanto o sistema é desenvolvido
+            Leonardo 28/10/2015
+            </summary>
+        </member>
+        <member name="P:ExceptionHandler.MsgAvancado.ExibeDetalhesDeErros">
+            <summary>
+            Define se devem ser exibidas as InnerExceptions da Exception
+            Leonardo 28/10/2015
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.MsgAvancado.ExibirErro(System.Exception,System.String,ExceptionHandler.MsgAvancado.IntensidadeErro)">
+            <summary>
+            Exibe uma mensagem de erro ao usuário e gera relatórios de erros, salvos num arquivo
+            Leonardo Costa 30/10/2015
+            </summary>
+            <param name="ex">Exceção a ser relatada</param>
+            <param name="mensagemUsuario">Mensagem a ser exibida ao usuário. Se o parâmetro não for passado, se for vazio, nulo,
+            e a intensidade do erro for diferente de gravissimo, não será exibida a mensagem</param>
+            <param name="intensidade">Intensidade do erro</param>
+        </member>
+        <member name="M:ExceptionHandler.MsgAvancado.ExibirInformacao(System.String)">
+            <summary>
+            Exibe uma informação
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.MsgAvancado.ExibirErroValidacao(System.String)">
+            <summary>
+            Exibe um erro validação
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.MsgAvancado.ExibirPergunta(System.String)">
+            <summary>
+            Exibe um erro pergunta
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.MsgAvancado.recover_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Evento executado de forma assíncrona que tenta salvar o relatório
+            Leonardo Costa 30/10/2015
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.MsgAvancado.recover_RunWorkerCompleted(System.Object,System.ComponentModel.RunWorkerCompletedEventArgs)">
+            <summary>
+            Reinicia o sistema se a intensidade do erro é gravissima, assim que termina de salvar o relatório
+            Leonardo Costa 30/10/2015
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.MsgAvancado.ConfigurarMsgAvancado(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Configura o MsgAvancado e os relatórios de erros.
+            Deve ser chamado no inicio do programa
+            Andrei 07/11/2015
+            </summary>
+            <param name="nomePrograma"></param>
+        </member>
+        <member name="T:ExceptionHandler.MsgAvancado.IntensidadeErro">
+            <summary>
+            Enumera a intensidade do erro, para definir o que deve ser feito
+            Leonardo 28/10/2015
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgAvancado.IntensidadeErro.Simples">
+            <summary>
+            Erro banal, não é necessário interromper a atividade do sistema
+            Leonardo 28/10/2015
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgAvancado.IntensidadeErro.Grave">
+            <summary>
+            Salva tudo que puder
+            Leonardo 28/10/2015
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgAvancado.IntensidadeErro.Gravissimo">
+            <summary>
+            Erro fatal, toda atividade do sistema deve ser interrompida imediatamente e o programador deve ser contatado
+            Leonardo 28/10/2015
+            </summary>
+        </member>
+        <member name="T:ExceptionHandler.MsgSingleControl">
+            <summary>
+            Classe responsável por alterar controles (um por instância desta classe)
+            e exibições de status de carregamento
+            Andrei 07/11/2015
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgSingleControl.CoresTexto">
+            <summary>
+            As cores padrão que são exibidas
+            </summary>
+        </member>
+        <member name="P:ExceptionHandler.MsgSingleControl.Control">
+            <summary>
+            O controle vinculado a esse objeto
+            </summary>
+        </member>
+        <member name="P:ExceptionHandler.MsgSingleControl.RodandoCarregamento">
+            <summary>
+            Get or Set se está exibindo uma mensagem de carregamento,
+            é importante para não ocorrer erro de thread
+            se setar como false mesmo com um carregamento, ele cancela
+            a atualização quando o timer atualizar novamente
+            </summary>
+        </member>
+        <member name="P:ExceptionHandler.MsgSingleControl.TextoExibido">
+            <summary>
+            Propriedade que muda diretamente o texto que está sendo exibido pelo controle
+            o tipo do texto continua sendo o mesmo do anterior
+            </summary>
+        </member>
+        <member name="P:ExceptionHandler.MsgSingleControl.Tipo">
+            <summary>
+            O tipo da mensagem que é exibido
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.MsgSingleControl.#ctor(System.Windows.Forms.Control)">
+            <summary>
+            Declara um MsgControl
+            </summary>
+            <param name="control_">Controle vinculado a esse MsgControl</param>
+        </member>
+        <member name="M:ExceptionHandler.MsgSingleControl.DefinirMensagem(System.String,ExceptionHandler.MsgSingleControl.TipoMensagem)">
+            <summary>
+            Define a mensagem que será exibida e o tipo dela
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.MsgSingleControl.IniciarExibicaoCarregamento">
+            <summary>
+            Inicia a exibição de carregamento do controle
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.MsgSingleControl.CancelarExibicaoCarregamento">
+            <summary>
+            Finaliza a exibição de carregamento do controle
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.MsgSingleControl.DefinirCor">
+            <summary>
+            Define a cor do controle exibida
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.MsgSingleControl.timer_Tick(System.Object,System.EventArgs)">
+            <summary>
+            Cada atualização do timer
+            </summary>
+        </member>
+        <member name="T:ExceptionHandler.MsgSingleControl.TipoMensagem">
+            <summary>
+            Define o tipo de mensagem que será exibido
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgSingleControl.TipoMensagem.Normal">
+            <summary>
+            Texto comum, o padrão é definido pela cor do texto do controle quando a instancia
+            desta classe é construída
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgSingleControl.TipoMensagem.Informacao">
+            <summary>
+            Texto de informação que algum dado foi modificado ou que o processo foi concluido
+            o padrão é azul
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgSingleControl.TipoMensagem.Erro">
+            <summary>
+            Texto que indica que ocorreu um erro, o padrão é vermelho
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgSingleControl.TipoMensagem.Comentario">
+            <summary>
+            Texo que indica um comentário, o padrão é verde
+            </summary>
+        </member>
+        <member name="T:ExceptionHandler.MsgMultControl">
+            <summary>
+            Alerta: classe em processo de construção!
+            Classe que agiliza a alteração de controles (vários por instância desta
+            classe) para exibição de alertas e mensagens, com reversão automática
+            da alteração durante um evento específico
+            </summary>
+        </member>
+        <member name="P:ExceptionHandler.MsgMultControl.ToolTipAtivo">
+            <summary>
+            Propriedade que define quando um ToolTip é exibido nos controles associados
+            </summary>
+        </member>
+        <member name="T:ExceptionHandler.MsgMultControl.BackColor">
+            <summary>
+            Define para qual cor o fundo do controle deve ser alterado
+            Leonardo Costa 30/10/2015
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgMultControl.BackColor.Verde">
+            <summary>
+            #80FF80
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgMultControl.BackColor.Amarelo">
+            <summary>
+            #FFFF80
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgMultControl.BackColor.Vermelho">
+            <summary>
+            #FF8080
+            </summary>
+        </member>
+        <member name="T:ExceptionHandler.MsgMultControl.ForeColor">
+            <summary>
+            Define para qual cor o texto do controle deve ser alterado
+            </summary>
+        </member>
+        <member name="T:ExceptionHandler.MsgMultControl.ReverterQuando">
+            <summary>
+            Define em qual evento as cores de fundo e do texto do
+            controle devem voltar ao normal
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgMultControl.ReverterQuando.NaoReverter">
+            <summary>
+            Não voltará ao normal automaticamente
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgMultControl.ReverterQuando.EuMandar">
+            <summary>
+            Volta ao normal quando chamado o método ReverterAgora()
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgMultControl.ReverterQuando.EntrarNoFoco">
+            <summary>
+            Volta ao normal quando o controle ganha foco
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgMultControl.ReverterQuando.TextoMudar">
+            <summary>
+            Volta ao normal quando o texto do controle muda
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgMultControl.ReverterQuando.Clicar">
+            <summary>
+            Volta ao normal quando o controle é clicado pelo cursor
+            </summary>
+        </member>
+        <member name="T:ExceptionHandler.MsgMultControl.Reversor">
+            <summary>
+            Armazena as propriedades originais do controle
+            e quando estas foram alteradas
+            </summary>
+        </member>
+        <member name="F:ExceptionHandler.MsgMultControl.aReverter">
+            <summary>
+            Armazena as alterações de todos os controles alterados, com opção de
+            reversão das alterações
+            </summary>
+            <param type="int">HashCode do controle</param>
+            <param type="Reversor">struct com as propriedades originais do controle</param>
+        </member>
+        <member name="M:ExceptionHandler.MsgMultControl.ConfigurarToolTip(System.Windows.Forms.ToolTip)">
+            <summary>
+            Configura as seguintes propriedades do ToolTip usado pelo MsgMultControl:
+            AutomaticDelay, AutoPopDelay, BackColor, ForeColor, InitialDelay, IsBalloon,
+            ReshowDelay, ShowAlways, ToolTipIcon, ToolTipTitle, UseAnimation e UseFading.
+            </summary>
+            <param name="tip">Exemplo de uso: ConfigurarToolTip(new ToolTip { ShowAlways = true, IsBalloon = true });</param>
+        </member>
+        <member name="M:ExceptionHandler.MsgMultControl.ReverterAgora(System.Windows.Forms.Control)">
+            <summary>
+            Muda o texto, a cor de fundo e do texto do controle para o texto e as cores de
+            antes de ser chamado o método AlterarControle()
+            </summary>
+            <param name="ctrl">Controle a ser restaurado. Se o método não foi chamado com este
+            controle ou se o controle é nulo, ele não é modificado</param>
+            <returns>Retorna o controle com as propriedades originais</returns>
+        </member>
+        <member name="M:ExceptionHandler.MsgMultControl.AlterarControle(System.Windows.Forms.Control,System.String,System.String,ExceptionHandler.MsgMultControl.ForeColor,ExceptionHandler.MsgMultControl.BackColor,ExceptionHandler.MsgMultControl.ReverterQuando)">
+            <summary>
+            Altera as propriedades de um controle para exibir algo ao usuário. Todos
+            os parâmetros são de passagem opcional.
+            </summary>
+            <param name="ctrl">O controle a ser alterado</param>
+            <param name="tip">Uma mensagem para ser exibida em um ToolTip. Se for
+            vazio ou nulo não será exibido o ToolTip. Configure-o com o método
+            ConfigurarToolTip()</param>
+            <param name="texto">Texto para alterar o controle</param>
+            <param name="corDoTexto">ForeColor do controle</param>
+            <param name="corDeFundo">BackColor do controle</param>
+            <param name="quando">Quando o controle volta ao normal</param>
+            <returns>Retorna o controle com as novas propriedades</returns>
+        </member>
+        <member name="M:ExceptionHandler.MsgMultControl.Evento(System.Object,System.EventArgs)">
+            <summary>
+            Evento chamado para alterar o controle
+            </summary>
+        </member>
+        <member name="T:ExceptionHandler.ObjetoConfig">
+            <summary>
+            Objeto Abstrato que possui as configurações para serem salvas
+            lembrando que para toda classe filha dessa ela deve ser Serializavel
+            Andrei 27/10/2015
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.ObjetoConfig.DefinirPadrao">
+            <summary>
+            Define as configurações padrão para esse objeto
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.ObjetoConfig.Salvar">
+            <summary>
+            Salva a configuração atual
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.ObjetoConfig.Clone">
+            <summary>
+            Torna o objeto clonavel
+            </summary>
+            <returns>Clone do objeto</returns>
+        </member>
+        <member name="T:ExceptionHandler.TaskExHandler">
+            <summary>
+            Classe que trata e gera relatório de exceções não tratadas em Tasks
+            Leonardo Costa 30/10/2015
+            </summary>
+        </member>
+        <member name="M:ExceptionHandler.TaskExHandler.StarNew(System.Action,System.String)">
+            <summary>
+            Inicia uma nova Task e adiciona um handler para exceções não tratadas.
+            Se erros de programador não são exibidos, não será exibida mensag
+            Leonardo Costa 30/10/2015
+            </summary>
+            <param name="act">O delegate a ser executado de forma assíncrona</param>
+            <param name="mensagem">Mensagem a ser exibida caso ocorra uma exceção na Task.
+            Se o parâmetro não for passado, se for vazio, nulo, e não são exibidos erros de programador
+            não será exibida mensagem ao usuário.</param>
+            <returns>Retorna a Task iniciada com o handler</returns>
+        </member>
+        <member name="M:ExceptionHandler.TaskExHandler.AddExceptionHandlerExt(System.Threading.Tasks.Task)">
+            <summary>
+            Extensão que adiciona um Handler para gerar relatórios de exceções não tratadas
+            Leonardo Costa 30/10/2015
+            </summary>
+            <returns>Retorna a Task com o Handler</returns>
+        </member>
+        <member name="M:ExceptionHandler.TaskExHandler.AddExceptionHandler(System.Threading.Tasks.Task)">
+            <summary>
+            Método que adiciona um Handler para gerar relatórios de exceções não tratadas
+            Leonardo Costa 30/10/2015
+            </summary>
+            <param name="t">Task que receberá o Handler</param>
+            <returns>Retorna a Task com o Handler</returns>
+        </member>
+        <member name="M:ExceptionHandler.TaskExHandler.ExceptionHandler(System.Threading.Tasks.Task)">
+            <summary>
+            Gera o relatório da exceção da Task
+            Leonardo Costa 30/10/2015
+            </summary>
+            <param name="task">Task que foi interrompida por uma exceção não tratada</param>
+        </member>
+    </members>
+</doc>
